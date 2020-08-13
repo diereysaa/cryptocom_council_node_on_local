@@ -421,7 +421,7 @@ It will ask you several things:
 
 * Authentication token
 * Staking address
-* Validator node name (Be creative! :smile:)
+* Validator node name (Be creative! :smile: )
 * Validator pub-key (the one from the `priv_validator_key.json` file)
 
 And at the end, it will show a **wonderful** message:
@@ -429,7 +429,7 @@ And at the end, it will show a **wonderful** message:
 Transaction successfully created!
 ```
 
-**YAY! :grin:**
+**YAY! :grin: :clap: :grin:**
 
 If you want to check if the node is signing correctly, you can execute this:
 ```shell
@@ -440,7 +440,11 @@ chmod +x check-validator-up.sh
 
 And it will reply something like this:
 ```shell
-./check-validator-up.sh --tendermint-url http://13.90.34.32:26657 --pubkey 4J*******************************9w=
 The validator is in the council nodes set under the address A0DD*****************************111
 The validator is signing @ Block#338405 👍
 ```
+
+---
+
+# Thanks!
+I would like to say thankyou to all the people on the gitter channel, and specifically to @calvinlauco, @lezzokafka for the general support and @alive29 for the services idea/script.
