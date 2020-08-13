@@ -256,7 +256,6 @@ Once the sync finish, you can check the Test CRO have arrived:
 ```
 It should show something like this:
 ```shell
-ubuntu@intel-nuc:~$ ./client-cli state --name <WALLET_NAME> --address 0x9121b59be9********************53fe22
 +-------------------+----------------------------+
 | Nonce             |                          0 |
 +-------------------+----------------------------+
