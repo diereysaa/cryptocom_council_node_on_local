@@ -237,12 +237,12 @@ New address: 0x9121b59be9********************53fe22
 ```
 Again, take note of the address for later use
 
-Now you need to send a message to the gitter chat community (https://gitter.im/crypto-com/community), so either @devashishdxt or @lezzokafka can topup our staking address with some test CROs
+Now you need to send a message to the gitter chat community (https://gitter.im/crypto-com/community), so either @devashishdxt or @lezzokafka can topup our staking address with some test CROs. 
 This is the message I sent, but you can elaborate your own:
 >Hi y'all, @devashishdxt @lezzokafka I've just finished installing the thaler node, and created my staking address: 0x912*******************************22
 >I would love to receive some test CROs to keep on working. TiA!
 
-*You can change the text if you want, but basically it's about tagginh these two users, and paste your staking address*
+*You can change the text if you want, but basically it's about tagging these two users, and pasting your staking address*
 
 Once they confirmed they've topped up our address, you need to sync your wallet:
 ```shell
