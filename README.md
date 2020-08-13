@@ -195,7 +195,7 @@ It should show something like this:
 24540 pts/0    S+     0:00 grep --color=auto aesm
 ```
 
-At this point we have all the software ready and installed. Now it's time to...
+At this point you have all the software ready and installed. Now it's time to...
 
 ### Create the Council Node
 
@@ -203,7 +203,7 @@ Add environment variables
 ```shell
 nano ~/.bash_profile
 ```
-And we paste the following:
+You have to paste the following:
 ```shell
 export CRYPTO_CHAIN_ID=testnet-thaler-crypto-com-chain-42
 export CRYPTO_CLIENT_TENDERMINT=ws://13.90.34.32:26657/websocket
@@ -213,13 +213,13 @@ Save, exit, and then:
 source ~/.bash_profile
 ```
 
-We need to create the wallet *(change "<WALLET_NAME>" for your desired name)*
+You need to create the wallet *(change "<WALLET_NAME>" for your desired name)*
 ```shell
 cd ~/crypto_node
 ./client-cli wallet new --name <WALLET_NAME> --type hd
 ```
 
-It will ask for your passphrase (twice) and then it will show your recovery seed and the Authentication Token:
+It will ask for your passphrase (twice) and then it will show your Recovery Seed and the Authentication Token:
 ```shell
 Please store following mnemonic safely to restore your wallet later: 
 Mnemonic: word word word word word word word word word word word word 
@@ -237,24 +237,24 @@ New address: 0x9121b59be9********************53fe22
 ```
 Again, take note of the address for later use
 
-Now we need to send a message to the gitter chat community, so either @devashishdxt or @lezzokafka can topup our staking address with some test CROs
+Now you need to send a message to the gitter chat community (https://gitter.im/crypto-com/community), so either @devashishdxt or @lezzokafka can topup our staking address with some test CROs
 This is the message I sent, but you can elaborate your own:
 >Hi y'all, @devashishdxt @lezzokafka I've just finished installing the thaler node, and created my staking address: 0x912*******************************22
 >I would love to receive some test CROs to keep on working. TiA!
 
-*You can change the text if you want, but basically it's about to tag these two users, and paste your staking address*
+*You can change the text if you want, but basically it's about tagginh these two users, and paste your staking address*
 
-Once they confirmed they've topped up our address, we need to sync the wallet:
+Once they confirmed they've topped up our address, you need to sync your wallet:
 ```shell
 ./client-cli sync --name <WALLET_NAME>
-```shell
+```
 *(This will take quite long (around 6 hours now that we're on block 320k, but you can shut it down and restart, and it will pick up where it left)*
 
-Once the sync finish, we can check the Testo CRO have arrived:
+Once the sync finish, you can check the Test CRO have arrived:
 ```shell
 ./client-cli state --name <WALLET_NAME> --address 0x9121b59be9********************53fe22
 ```
-It shoudl show something like this:
+It should show something like this:
 ```shell
 ubuntu@intel-nuc:~$ ./client-cli state --name <WALLET_NAME> --address 0x9121b59be9********************53fe22
 +-------------------+----------------------------+
@@ -276,7 +276,7 @@ ubuntu@intel-nuc:~$ ./client-cli state --name <WALLET_NAME> --address 0x9121b59b
 +-------------------+----------------------------+
 ```
 
-With the wallet sync'd and the tCROs ready, we need to setup `tendermint`
+With the wallet sync'd and the tCROs ready, you need to setup `tendermint`
 ```shell
 ./tendermint init
 sed -i '/seeds = /c\seeds = "f3806de90c43f5474c6de2b5edefb81b9011f51f@52.186.66.214:26656,29fab3b66ee6d9a46a4ad0cc1b061fbf02024354@13.71.189.105:26656,2ab2acc873250dccc3eb5f6eb5bd003fe5e0caa7@51.145.98.33:26656"' ~/crypto_node/.tendermint/config/config.toml
@@ -284,13 +284,13 @@ sed -i '/create_empty_blocks_interval = /c\create_empty_blocks_interval = "60s"'
 sed -i '/index_all_tags = /c\index_all_tags = true' ~/crypto_node/.tendermint/config/config.toml
 ```
 
-Let's check all the `tendermint` config is available
+Let's check the `tendermint` config is available
 ```shell
 ls -l  ~/crypto_node/.tendermint/config/priv_validator_key.json 
 -rw------- 1 ubuntu ubuntu 345 Aug  4 17:39 /home/ubuntu/crypto_node/.tendermint/config/priv_validator_key.json
 ```
 
-Now we need a value from the `priv_validator_key.json`
+Now you need a value from the `priv_validator_key.json`
 ```shell
 cat /home/ubuntu/.tendermint/config/priv_validator_key.json
 ```
@@ -309,21 +309,21 @@ It will return something like this:
   }
 }
 ```
-The important value is the `pub_key` (oiuy****************************Z31QU= in this case)
+The important value here is the `pub_key` (oiuy****************************Z31QU= in this case)
 
-Sometimes, `chain-abci` is not available on the word folder, so let's copy it over:
+Sometimes, `chain-abci` is not available on the working folder, so let's copy it over:
 ```shell
 cp chain-abci-HW-debug/chain-abci ./chain-abci
 cp chain-abci-HW-debug/tx_validation_enclave.signed.so ./tx_validation_enclave.signed.so
 ```
 
 ### Launching everything as a service
-Now we need to create the listeners for the services that will run in the background, and will resist a reboot of our machine
+Now you need to create the listeners for the services that will run in the background, and will resist a reboot of your machine
 ```shell
 sudo nano /etc/systemd/system/chain-listener.service
 ```
 
-We paste this:
+Then paste this:
 ```shell
 [Unit]
 Description=Crypto.com chain-abci listener
@@ -343,29 +343,29 @@ ExecStart=/home/ubuntu/crypto_node/chain-abci --chain_id testnet-thaler-crypto-c
 WantedBy=multi-user.target
 ```
 
-And then, we execute:
+And then, execute:
 ```shell
 sudo systemctl enable chain-listener.service
 sudo systemctl start chain-listener.service
 ```
 
-Now we need to reboot the machine:
+Now, reboot the machine:
 ```shell
 sudo reboot now
 ```
 
-After rebooting, the `chain-listener` should be working in the background and we can check it by running:
+After rebooting, the `chain-listener` should be working in the background and you can check it by running:
 ```shell
 sudo journalctl -u chain-listener.service -f
 ```
 *(Exit with Ctrl+C)*
 
-And we need to makje the same for `tendermint`
+Then you need to make the same for `tendermint`
 ```shell
 sudo nano /etc/systemd/system/node-listener.service
 ```
 
-And we paste this:
+Paste this:
 ```shell
 [Unit]
 Description=Crypto.com tendermint node listener
@@ -384,41 +384,41 @@ ExecStart=/home/ubuntu/crypto_node/tendermint node --home /home/ubuntu/crypto_no
 WantedBy=multi-user.target
 ```
 
-And then, we execute:
+And then, execute:
 ```shell
 sudo systemctl enable node-listener.service
 sudo systemctl start node-listener.service
 ```
 
-And again, we need to reboot the machine:
+And again, you need to reboot the machine:
 ```shell
 sudo reboot now
 ```
 
-After rebooting, the `node-listener` should be working in the background and we can check it by running:
+After rebooting, the `node-listener` should be working in the background and you can check it by running:
 ```shell
 sudo journalctl -u node-listener.service -f
 ```
 
-> :warning: the `tendermint node` command will retrieve the whole blockchain, so depending on the current state of the network, it could take some time.
+> :warning: The `tendermint node` command will retrieve the whole blockchain, so depending on the current state of the network, it could take some time.
 > Example: as of 5th of August 2020, we are on block ~320.000, so `tendermint node` will take ~24 hours to catch up.
 
-With this command we can check what's the current block height, to know how far `tendermint node` is:
+With this command you can check what's the current block height, to know how far `tendermint node` is:
 ```shell
 curl -s http://13.90.34.32:26657/commit | jq "{height: .result.signed_header.header.height}"
 ```
 
-Just before starting the node it's **REALLY IMPORTANT** that our wallet has to be sync'd with the blockchain, so we execute this again:
+Just before joining the node council it's **REALLY IMPORTANT** that your wallet to be sync'd with the blockchain, so execute this again:
 ```shell
 ./client-cli sync --name <WALLET_NAME>
 ```
 
-As soon as the wallet is sync'd we can sent the `node-join` request: 
+As soon as the wallet is sync'd you can sent the `node-join` request: 
 ```shell
 ./client-cli transaction new --name <WALLET_NAME> --type node-join
 ```
 
-It will ask us several things:
+It will ask you several things:
 
 * Authentication token
 * Staking address
@@ -432,9 +432,16 @@ Transaction successfully created!
 
 **YAY! :grin:**
 
-If we want to check if the node is signing correctly, we can execute this:
+If you want to check if the node is signing correctly, you can execute this:
 ```shell
 wget https://raw.githubusercontent.com/crypto-com/chain-docs/master/docs/getting-started/assets/signature_checking/check-validator-up.sh
 chmod +x check-validator-up.sh 
 ./check-validator-up.sh --tendermint-url http://13.90.34.32:26657 --pubkey "<YOUR_VALIDATOR_PUBLICKEY>"
+```
+
+And it will reply something like this:
+```shell
+./check-validator-up.sh --tendermint-url http://13.90.34.32:26657 --pubkey 4J*******************************9w=
+The validator is in the council nodes set under the address A0DD*****************************111
+The validator is signing @ Block#338405 👍
 ```
