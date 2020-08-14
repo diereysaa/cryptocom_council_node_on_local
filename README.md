@@ -1,6 +1,8 @@
 # Crypto.com Council Node on local machine
 
-This is the documentation on how to create a council node for Crypto.com chain on a physical machine running Ubuntu 18.04
+![Chain v.: 0.5](https://img.shields.io/badge/Chain%20v.-0.5-green) ![Environment: Local  (Intel)](https://img.shields.io/badge/Environment-Local%20(Intel)-blue) ![OS: Ubuntu 18.04](https://img.shields.io/badge/OS-Ununtu%2018.04-orange) ![Complexety: Intermediate](https://img.shields.io/badge/Complexety-Intermediate-yellow)
+
+This is the documentation on how to create a council node for Crypto.com chain on its version 0.5 on a physical machine running Ubuntu 18.04
 You basically need a local machine with some specific characteristics and some specific software running on it
 
 ## Local machine
