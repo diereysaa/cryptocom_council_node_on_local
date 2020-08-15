@@ -34,7 +34,7 @@ You need to install Ubuntu 18.04 Server. I won't explain how to install Ubuntu o
 ## Software install
 You need to connect by SSH/Telnet to the machine, if you need help with that, please follow this guide: https://www.digitalocean.com/community/tutorials/how-to-use-ssh-to-connect-to-a-remote-server-in-ubuntu  
 
-######Initial updates:
+###### Initial updates:
 ```shell
 sudo apt update && sudo apt upgrade -y && sudo apt autoremove
 sudo apt install -y gcc dkms jq unzip
