@@ -137,14 +137,6 @@ sudo apt-get install -y libsgx-epid libsgx-urts
 sudo apt-get install -y libsgx-quote-ex libsgx-urts
 ```
 
-#### Install the SGX SDK:
-```shell
-chmod +x sgx_linux_x64_sdk_2.9.101.2.bin 
-sudo ./sgx_linux_x64_sdk_2.9.101.2.bin 
-## We need to confirm with "Yes" when asked
-source /home/ubuntu/crypto_node/sgxsdk/environment
-```
-
 #### Since you're using Ubuntu 18.04, it's recommended to add the mitigation tool
 ```shell
 wget https://download.01.org/intel-sgx/sgx-linux/2.9/as.ld.objdump.gold.r1.tar.gz
