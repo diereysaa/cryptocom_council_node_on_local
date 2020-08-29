@@ -171,7 +171,7 @@ tar -zxvf crypto-com-chain-release-0.5.3.tar.gz
 #### Configure tendermint
 ```shell
 cd ~/crypto_node
-./tendermint init
+./tendermint init --home ~/crypto_node/.tendermint
 cd ~/crypto_node/.tendermint/config/
 curl https://raw.githubusercontent.com/crypto-com/chain-docs/master/docs/getting-started/assets/genesis_file/v0.5/genesis.json > ~/crypto_node/.tendermint/config/genesis.json
 ```
