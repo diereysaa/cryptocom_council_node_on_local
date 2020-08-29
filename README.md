@@ -155,6 +155,7 @@ sudo apt install -y libzmq3-dev
 
 #### Install tendermint
 ```shell
+cd ~/crypto_node
 sudo apt update
 curl -LOJ https://github.com/tendermint/tendermint/releases/download/v0.33.7/tendermint_v0.33.7_linux_amd64.zip
 unzip tendermint_v0.33.7_linux_amd64.zip
@@ -162,12 +163,14 @@ unzip tendermint_v0.33.7_linux_amd64.zip
 
 #### Install Crypto.com chain
 ```shell
+cd ~/crypto_node
 curl -LOJ https://github.com/crypto-com/chain/releases/download/v0.5.3/crypto-com-chain-release-0.5.3.tar.gz
 tar -zxvf crypto-com-chain-release-0.5.3.tar.gz
 ```
 
 #### Configure tendermint
 ```shell
+cd ~/crypto_node
 ./tendermint init
 cd ~/crypto_node/.tendermint/config/
 curl https://raw.githubusercontent.com/crypto-com/chain-docs/master/docs/getting-started/assets/genesis_file/v0.5/genesis.json > ~/crypto_node/.tendermint/config/genesis.json
@@ -188,7 +191,54 @@ It should show something like this:
 23159 ?        Ssl    0:00 /opt/intel/sgx-aesm-service/aesm/aesm_service
 24540 pts/0    S+     0:00 grep --color=auto aesm
 ```
+#### Check everything is correctly installed and available
+So basically everythign has to be inside the `crypto_node` folder, and just that folder in your main `/home` folder
+```shell
+cd ~
+ls -l
+```
+It should show something like this:
+```shell
+ubuntu@intel-nuc:~$ ls -l
+total 4
+drwxrwxr-x 10 ubuntu ubuntu 4096 Aug 17 11:12 crypto_node
+```
 
+And then, inside the `crypto_node` folder:
+```shell
+cd ~/crypto_node
+ls -la
+```
+It should show something like this:
+```shell
+ubuntu@intel-nuc:~/crypto_node$ ls -la
+total 407524
+drwxrwxr-x 10 ubuntu ubuntu      4096 Aug 17 11:12 .
+drwxr-xr-x  8 ubuntu ubuntu      4096 Aug 29 09:52 ..
+drwxrwxr-x  3 ubuntu ubuntu      4096 Aug  9 17:42 .cro-storage
+drwxrwxr-x  3 ubuntu ubuntu      4096 Aug 15 11:06 .storage
+drwx------  4 ubuntu ubuntu      4096 Aug  9 17:49 .tendermint
+-rw-rw-r--  1 ubuntu ubuntu   3932297 Jul  8 05:52 as.ld.objdump.gold.r1.tar.gz
+-rwxr-xr-x  1 ubuntu ubuntu 191365872 Aug  9 17:40 chain-abci
+drwxrwxr-x  2 ubuntu ubuntu      4096 May  2 02:35 chain-abci-HW-debug
+-rwxrwxr-x  1 ubuntu ubuntu      1715 Aug 10 22:52 check-validator-up.sh
+-rwxr-xr-x  1 ubuntu ubuntu  18117032 May 20 07:23 client-cli
+-rwxr-xr-x  1 ubuntu ubuntu  20960992 May 20 07:23 client-rpc
+-rw-rw-r--  1 ubuntu ubuntu  94058789 Aug  9 09:37 crypto-com-chain-release-0.5.3.tar.gz
+-rwxr-xr-x  1 ubuntu ubuntu  11531296 May  2 02:34 dev-utils
+drwxrwxr-x  3 ubuntu ubuntu      4096 Feb 21  2020 external
+drwxrwxr-x  2 ubuntu ubuntu      4096 Aug 17 11:12 node_modules
+-rwxrwxr-x  1 ubuntu ubuntu     38191 Jul  8 05:52 sgx_linux_x64_driver_1.33.bin
+-rwxrwxr-x  1 ubuntu ubuntu     28941 Jul  8 05:52 sgx_linux_x64_driver_2.6.0_95eaa6f.bin
+-rwxrwxr-x  1 ubuntu ubuntu  17602926 Jul  8 05:52 sgx_linux_x64_sdk_2.9.101.2.bin
+drwxr-xr-x  9 ubuntu ubuntu      4096 Aug  9 09:34 sgxsdk
+-rwxr-xr-x  1 ubuntu ubuntu  23666688 Aug  4 11:22 tendermint
+-rw-rw-r--  1 ubuntu ubuntu  23666828 Aug  9 09:37 tendermint_v0.33.7_linux_amd64.zip
+drwxrwxr-x  2 ubuntu ubuntu      4096 May  2 02:25 tx-query-HW-debug
+-rw-r--r--  1 ubuntu ubuntu  12258608 Aug  9 17:40 tx_validation_enclave.signed.so
+```
+
+ 
 At this point you have all the software ready and installed. Now it's time to...
 
 ### Create the Council Node
@@ -271,6 +321,7 @@ It should show something like this:
 
 #### With the wallet sync'd and the tCROs ready, you need to setup `tendermint`
 ```shell
+cd ~/crypto_node
 ./tendermint init
 sed -i '/seeds = /c\seeds = "f3806de90c43f5474c6de2b5edefb81b9011f51f@52.186.66.214:26656,29fab3b66ee6d9a46a4ad0cc1b061fbf02024354@13.71.189.105:26656,2ab2acc873250dccc3eb5f6eb5bd003fe5e0caa7@51.145.98.33:26656"' ~/crypto_node/.tendermint/config/config.toml
 sed -i '/create_empty_blocks_interval = /c\create_empty_blocks_interval = "60s"' ~/crypto_node/.tendermint/config/config.toml
@@ -406,6 +457,12 @@ curl -s http://13.90.34.32:26657/commit | jq "{height: .result.signed_header.hea
 ```shell
 ./client-cli sync --name <WALLET_NAME>
 ```
+
+---
+
+### Before the next step is really important to check both the wallet and the node-listener are synchronised, otherwise, the node will be created, but will be slashed after a few hours, and **you will need to start the whole process again**
+
+---
 
 #### As soon as the wallet is sync'd you can sent the `node-join` request: 
 ```shell
