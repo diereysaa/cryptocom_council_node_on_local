@@ -99,7 +99,6 @@ https://download.01.org/intel-sgx/sgx-linux/2.9.1/distro/ubuntu18.04-server/
 *(As of 5th of August 2020 these are the most updated files)*
 ```shell
 wget https://download.01.org/intel-sgx/sgx-linux/2.9.1/distro/ubuntu18.04-server/sgx_linux_x64_driver_1.33.bin
-wget https://download.01.org/intel-sgx/sgx-linux/2.9.1/distro/ubuntu18.04-server/sgx_linux_x64_sdk_2.9.101.2.bin
 wget https://download.01.org/intel-sgx/sgx-linux/2.9.1/distro/ubuntu18.04-server/sgx_linux_x64_driver_2.6.0_95eaa6f.bin
 ```
 
