@@ -461,7 +461,9 @@ curl -s http://13.90.34.32:26657/commit | jq "{height: .result.signed_header.hea
 
 :bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang: 
 
-### Before the next step is really important to check both the wallet and the node-listener are synchronised, otherwise, the node will be created, but will be slashed after a few hours, and **you will need to start the whole process again**
+```diff
+- Before the next step is really important to check both the wallet and the node-listener are synchronised, otherwise, the node will be created, but will be slashed after a few hours, and YOU WILL NEED TO START THE WHOLE PROCESS AGAIN
+```
 
 :bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang::bangbang:
 
