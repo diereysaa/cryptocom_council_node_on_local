@@ -321,7 +321,6 @@ It should show something like this:
 #### With the wallet sync'd and the tCROs ready, you need to setup `tendermint`
 ```shell
 cd ~/crypto_node
-./tendermint init
 sed -i '/seeds = /c\seeds = "f3806de90c43f5474c6de2b5edefb81b9011f51f@52.186.66.214:26656,29fab3b66ee6d9a46a4ad0cc1b061fbf02024354@13.71.189.105:26656,2ab2acc873250dccc3eb5f6eb5bd003fe5e0caa7@51.145.98.33:26656"' ~/crypto_node/.tendermint/config/config.toml
 sed -i '/create_empty_blocks_interval = /c\create_empty_blocks_interval = "60s"' ~/crypto_node/.tendermint/config/config.toml
 sed -i '/index_all_tags = /c\index_all_tags = true' ~/crypto_node/.tendermint/config/config.toml
@@ -335,7 +334,7 @@ ls -l  ~/crypto_node/.tendermint/config/priv_validator_key.json
 
 #### Now you need a value from the `priv_validator_key.json`
 ```shell
-cat /home/ubuntu/.tendermint/config/priv_validator_key.json
+cat ~/crypto_node/.tendermint/config/priv_validator_key.json
 ```
 
 #### It will return something like this:
