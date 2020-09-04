@@ -1,6 +1,6 @@
 # Crypto.com Council Node on local machine
 
-![Chain v.: 0.5](https://img.shields.io/badge/Chain%20v.-0.5-green) ![Environment: Local  (Intel)](https://img.shields.io/badge/Environment-Local%20(Intel)-blue) ![OS: Ubuntu 18.04](https://img.shields.io/badge/OS-Ununtu%2018.04-orange) ![Complexety: Intermediate](https://img.shields.io/badge/Complexety-Intermediate-yellow)
+![Chain v.: 0.5.4](https://img.shields.io/badge/Chain%20v.-0.5.4-green) ![Environment: Local  (Intel)](https://img.shields.io/badge/Environment-Local%20(Intel)-blue) ![OS: Ubuntu 18.04](https://img.shields.io/badge/OS-Ununtu%2018.04-orange) ![Complexety: Intermediate](https://img.shields.io/badge/Complexety-Intermediate-yellow)
 
 This is the documentation on how to create a council node for Crypto.com chain on its version 0.5 on a physical machine running Ubuntu 18.04
 You basically need a local machine with some specific characteristics and some specific software running on it
@@ -163,8 +163,8 @@ unzip tendermint_v0.33.7_linux_amd64.zip
 #### Install Crypto.com chain
 ```shell
 cd ~/crypto_node
-curl -LOJ https://github.com/crypto-com/chain/releases/download/v0.5.3/crypto-com-chain-release-0.5.3.tar.gz
-tar -zxvf crypto-com-chain-release-0.5.3.tar.gz
+curl -LOJ https://github.com/crypto-com/chain/releases/download/v0.5.4/crypto-com-chain-release-0.5.3.tar.gz
+tar -zxvf crypto-com-chain-release-0.5.4.tar.gz
 ```
 
 #### Configure tendermint
