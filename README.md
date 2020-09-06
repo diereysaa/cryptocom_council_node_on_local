@@ -163,7 +163,7 @@ unzip tendermint_v0.33.7_linux_amd64.zip
 #### Install Crypto.com chain
 ```shell
 cd ~/crypto_node
-curl -LOJ https://github.com/crypto-com/chain/releases/download/v0.5.4/crypto-com-chain-release-0.5.3.tar.gz
+curl -LOJ https://github.com/crypto-com/chain/releases/download/v0.5.4/crypto-com-chain-release-0.5.4.tar.gz
 tar -zxvf crypto-com-chain-release-0.5.4.tar.gz
 ```
 
@@ -360,6 +360,8 @@ cp chain-abci-HW-debug/tx_validation_enclave.signed.so ./tx_validation_enclave.s
 ```
 
 ### Launching everything as a service
+
+> :warning:  Note that the following scripts were created for the user `ubuntu`. If your OS user is different, replace all the appearances of `ubuntu` with it.
 
 #### Now you need to create the listeners for the services that will run in the background, and will resist a reboot of your machine
 ```shell
