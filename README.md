@@ -506,5 +506,50 @@ The validator is signing @ Block#338405 👍
 
 ---
 
+# Extras
+
+### Keep your wallet auto-synchronised
+In many cases you may want to keep your wallet syncronized (if you need to re-join, want to play around with some CROs, etc...) So the best option is to program a repetitive autonomous task on the server. This is made by the `cronjob` daemon.
+In order to create a new cronjob (a repetitive action auto-performed by the server) we first need to get into the edit mode:
+```shell
+crontab -e
+```
+
+The first time we call the `crontab` command, it may ask us which editor to use:
+```shell
+~/crypto_node$ crontab -e
+
+no crontab for ubuntu - using an empty one
+
+Select an editor.  To change later, run 'select-editor'.
+  1. /bin/nano        <---- easiest
+  2. /usr/bin/vim.basic
+  3. /usr/bin/vim.tiny
+  4. /bin/ed
+
+Choose 1-4 [1]: 
+```
+
+Since we have been using `nano` for the whole tutorial, just select it.
+Once inside the crontab file, you will see some comments on how this file works. We basically need to tell the server which command to execute and how often to do it. (If you want to find out more about cron, read the official page (https://en.wikipedia.org/wiki/Cron)
+
+We will setting up the wallet synchroniser every 5 minutes. The first time, the wallet could take a bit to sync, but succesive actions will take less time.
+
+> :warning: It's a good idea to manually sync your wallet before setting the cronjob, so the cronjob executes small syncs only
+
+Just copy and paste this inside the crontab file you've opened with `nano`:
+```shell
+# Command to synchronize node wallet
+*/5 * * * * cd ~/crypto_node && echo <YOUR_AUTHORISATION_TOKEN> | ./client-cli status --name <WALLET_NAME> >/dev/null 2>&1
+```
+Then, as always, save (Ctrl+o) and exit (Ctrl+x)
+The server will let you know that a new cronjob has been added:
+```shell
+crontab: installing new crontab
+```
+
+
+---
+
 # Thanks!
 I would like to say thankyou to all the people on the gitter channel, and specifically to @calvinlauco, @lezzokafka for the general support and @alive29 for the services idea/script.
