@@ -540,7 +540,7 @@ We will setting up the wallet synchroniser every 5 minutes. The first time, the 
 Just copy and paste this inside the crontab file you've opened with `nano`:
 ```shell
 # Command to synchronise node wallet
-*/5 * * * * cd ~/crypto_node && echo <YOUR_AUTHORISATION_TOKEN> | ./client-cli status --name <WALLET_NAME> >/dev/null 2>&1
+*/5 * * * * cd ~/crypto_node && echo <YOUR_AUTHORISATION_TOKEN> | ./client-cli sync --name <WALLET_NAME> >/dev/null 2>&1
 ```
 Then, as always, save (Ctrl+o) and exit (Ctrl+x)
 The server will let you know that a new cronjob has been added:
