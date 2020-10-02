@@ -509,7 +509,7 @@ The validator is signing @ Block#338405 👍
 # Extras
 
 ### Keep your wallet auto-synchronised
-In many cases you may want to keep your wallet syncronized (if you need to re-join, want to play around with some CROs, etc...) So the best option is to program a repetitive autonomous task on the server. This is made by the `cronjob` daemon.
+In many cases you may want to keep your wallet syncronised (if you need to re-join, want to play around with some CROs, etc...) So the best option is to program a repetitive autonomous task on the server. This is made by the `cronjob` daemon.
 In order to create a new cronjob (a repetitive action auto-performed by the server) we first need to get into the edit mode:
 ```shell
 crontab -e
@@ -539,7 +539,7 @@ We will setting up the wallet synchroniser every 5 minutes. The first time, the 
 
 Just copy and paste this inside the crontab file you've opened with `nano`:
 ```shell
-# Command to synchronize node wallet
+# Command to synchronise node wallet
 */5 * * * * cd ~/crypto_node && echo <YOUR_AUTHORISATION_TOKEN> | ./client-cli status --name <WALLET_NAME> >/dev/null 2>&1
 ```
 Then, as always, save (Ctrl+o) and exit (Ctrl+x)
